@@ -66,7 +66,6 @@ if len(sys.argv)==1:
 	usage()
 	sys.exit()
 
-print(len(sys.argv))
 gc=pygsheets.authorize(client_secret=SECRET_FILE, credentials_directory=SECRET_DIRECTORY)
 sheet=gc.open(GOOGLE_SHEETS_FILE)
 worksheet=sheet.sheet1
@@ -80,7 +79,7 @@ addl_fmt=add_tags(output_row,sys.argv[1])
 output_row.append(sys.argv[1])
 add_params(output_row,sys.argv[1])
 worksheet.insert_rows(row=1,number=1,values=output_row)
-worksheet.get_row(2,returnas="range").clear(fields = "userEnteredFormat")
+worksheet.get_row(2,returnas="range").clear(fields = "userEnteredFormat.textFormat")
 
 update_row_color(worksheet)
 update_addl_format(worksheet,addl_fmt)
