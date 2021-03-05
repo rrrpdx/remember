@@ -47,10 +47,8 @@ def update_row_color(worksheet):
 		"green":scaled_colors[color_index][1],"blue":scaled_colors[color_index][2]}}})
 
 def update_addl_format(worksheet,addl_format):
-	set_bold=False
 	for fmt in addl_format:
 		if fmt=='bold':
-				set_bold=True
 				worksheet.get_row(2,returnas="range").apply_format(pygsheets.Cell('A1'),fields = "userEnteredFormat.textFormat.bold",
 					cell_json={"userEnteredFormat":{"textFormat":{"bold":True}}})
 
